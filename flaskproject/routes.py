@@ -44,3 +44,19 @@ def register():
         return redirect(url_for('signIn')) #function name and urel_for name should be same
     return {"message": "success"}
 
+# Patient Login
+@app.route('/patientLogin', methods=["POST","GET"])
+def login():
+    if request.method == "POST":
+        email = request.form["email"]
+        password = request.form["password"]
+        hashedPassword = hashlib.md5(bytes(str(password),encoding='utf-8'))
+        hashedPassword = hashedPassword.hexdigest()
+        result = Patient.query.filter_by(email = email).first()
+        if result == None or hashedPassword != result.password:
+            return "Invalid email or password"
+        token = jwt.encode({'user':result.email, 'exp': datetime.utcnow()+timedelta(minutes=15)}, app.config['SECRET_KEY'])
+        session["jwt"] = token
+        return redirect(url_for('patientDashboard'))
+    return jsonify({"jwt": "token"}) 
+   
