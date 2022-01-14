@@ -82,3 +82,19 @@ def profile(current_user):
         db.session.commit()
     return jsonify({"update": "success"})
    
+
+@app.route('/doctorLogin', methods = ["POST", "GET"])
+def docLogin():
+    if request.method == "POST":
+        fullname = request.json["fullname"]
+        email = request.json["email"]
+        password = request.json["password"]
+        hashedPassword = hashlib.md5(bytes(str(password),encoding='utf-8'))
+        hashedPassword = hashedPassword.hexdigest() 
+        result = Doctor.query.filter_by(email = email).first()
+        if result == None or hashedPassword != result.password:
+            return "Invalid email or password"
+        token = jwt.encode({'user':result.email, 'exp': datetime.utcnow()+timedelta(minutes=15)}, app.config['SECRET_KEY'])
+        session["jwt"] = token
+        return redirect(url_for('doctorDashboard'))
+    return render_template('doctorslogin.html')
