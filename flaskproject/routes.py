@@ -1,3 +1,4 @@
+
 from flaskproject import app, db
 from flask import request, session, url_for, make_response
 from flask.json import jsonify
@@ -5,9 +6,10 @@ from werkzeug.utils import redirect
 import hashlib
 from datetime import datetime, timedelta
 import jwt
+from flaskproject.decorator import token_required
 from flaskproject.models import Patient, Doctor
+from flask_restful import Api, Resource, reqparse
 from flask.templating import render_template
-
 
 # Home Page route
 
@@ -25,6 +27,12 @@ def signUp():
 def signIn():
     return render_template('login.html')
 
+# Patient Dashboard
+@app.route('/patientDashboard')
+@token_required
+def patientDashboard(current_user):
+    patient = Patient.query.filter_by(email = current_user).first()
+    return render_template('patientDashboard.html', patient = patient)
 
 # Patient Register
 
@@ -59,4 +67,18 @@ def login():
         session["jwt"] = token
         return redirect(url_for('patientDashboard'))
     return jsonify({"jwt": "token"}) 
+
+# Patient Profile
+
+@app.route('/patientProfile', methods= ["POST", "GET"])
+@token_required
+def profile(current_user):
+    if request.method == "POST":
+        patient = Patient.query.filter_by(email = current_user).first()
+        patient.age = request.json["age"]
+        patient.gender = request.json["gender"]
+        patient.address = request.json["address"]
+        patient.phone = request.json["phone"]
+        db.session.commit()
+    return jsonify({"update": "success"})
    
