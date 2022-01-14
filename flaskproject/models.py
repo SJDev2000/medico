@@ -16,3 +16,16 @@ class Patient(db.Model):
     def __repr__(self):
         return f"Patient('{self.fullname}', '{self.email}')"
 
+class Doctor(db.Model):
+    __tablename__="doctor"
+    id = db.Column(db.Integer, primary_key=True)
+    prescriptions = db.relationship('Prescription',backref='doctor',lazy="dynamic")
+    fullname = db.Column(db.String(120), unique = False)
+    email = db.Column(db.String(120), unique = True)
+    password = db.Column(db.String(120), unique = False)
+    image = db.Column(db.String(1000), nullable = True)
+    desc = db.Column(db.String(200), nullable = True)
+    
+    def __repr__(self):
+        return f"Doctor('{self.fullname}', '{self.email}')" 
+
