@@ -1,0 +1,164 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinic </title>
+    
+	<link rel="stylesheet" type="text/css" href="css/opensans-font.css">
+	<link rel="stylesheet" type="text/css" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+    <link rel='stylesheet' href="css/style.css" />
+    <link rel='stylesheet' href="css/patientProfileStyle.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="menu-wrapper">
+        <div class="sidebar-header">
+            <div class="sideBar">
+                <div><img src='images/Health-Sign-blue-icon.png' /></div>
+                <ul>
+                    <li class="selected"><i class="fas fa-home"></i><label>Dashboard</label></li>
+                    <li><i class="fas fa-user"></i><label>Profile</label></li>
+                    <li><i class="fas fa-user-md"></i><label>Doctor</label></li>
+                    <li><i class="fas fa-phone-alt"></i><label>Contact</label></li>
+                    <li><i class="fas fa-user"></i><label>About us</label></li>
+                    <li><i class="fas fa-cog"></i><label>Setting</label></li>
+                </ul> <span class="cross-icon"><i class="fas fa-times"></i></span>
+            </div>
+            <div class="backdrop"></div>
+            <div class="content">
+                <header>
+                    <div class="menu-button" id='desktop'>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="menu-button" id='mobile'>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </header>
+                <div class="content-data"> 
+                    
+                    <div class="form-v1-content">
+                        <div class="wizard-form">
+                            <form class="form-register" action="#" method="post">
+                                <div id="form-total">
+                                    
+                                    <h2>
+                                        <p class="step-icon"><span>01</span></p>
+                                        <span class="step-text">Welcome</span>
+                                    </h2>
+                                    <section>
+                                        <div class="inner">
+                                            <div class="wizard-header">
+                                                <h3 class="heading">MEDICO</h3>
+                                                <p>Let's get started!! </p>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-holder form-holder-2">
+                                                    <fieldset>
+                                                        <legend>Full Name</legend>
+                                                        <input type="text" class="form-control" id="full-name" name="full-name" placeholder="Enter Your Name" required>
+                                                    </fieldset>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-holder form-holder-2">
+                                                    <fieldset>
+                                                        <legend>Your Email</legend>
+                                                        <input type="text" name="your_email" id="your_email" class="form-control" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="example@email.com" required readonly>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-holder form-holder-2">
+                                                    <fieldset>
+                                                        <legend>Phone Number</legend>
+                                                        <input type="number" class="form-control" id="phone" name="phone" placeholder="+1 888-999-7777" required>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-holder form-holder-2">
+                                                    <fieldset>
+                                                        <legend>Image</legend>
+                                                        <input type="file" id="myFile" name="filename">
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="form-row form-row-date">
+                                    
+                                            </div> -->
+                                            <div class="form-row">
+                                                <div class="form-holder form-holder-2">
+                                                    <input type="text" class="form-control input-border" id="ans" name="ans" placeholder="Add any Suggestions" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                
+                                    <h2>
+                                        <p class="step-icon"><span>01</span></p>
+                                        <span class="step-text">Peronal Infomation</span>
+                                    </h2>
+                                    <section>
+                                        <div class="inner">
+                                            <div class="wizard-header">
+                                                <h3 class="heading">Peronal Infomation</h3>
+                                                <p>Just Few More minutes... </p>
+                                            </div>
+                                            
+                                                <div class="form-row">
+                                                    <div class="form-holder form-holder-2">
+                                                        <fieldset>
+                                                            <legend>Age</legend>
+                                                            <input type="number" name="age" id="age" class="form-control"placeholder="age" required>
+                                                        </fieldset>
+                                                    
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-holder form-holder-2">
+                                                        <fieldset>
+                                                            <legend>Gender</legend>
+                                                            <input type="text" name="gender" id="gender" class="form-control"placeholder="gender" required>
+                                                        </fieldset>
+                                                    
+                                                    </div>
+                                                
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-holder form-holder-2">
+                                                    
+                                                    <label class="special-label">Address:</label>
+                                                    <fieldset>
+                                                        <input type="text" name="Address" id="Address" class="form-control"placeholder="House number,Street,City,State" required>
+                                                        <input type="text" name="Address" id="Address" class="form-control"required>
+                                                </fieldset>
+                                                </div>
+                                            </div>
+                                              <p style="font-size: large;text-align: center;"><b>Thankyou!!</b></p><br>
+                                                <p style="font-size: large;text-align: center;"><b>Team MEDICO</b></p>
+                                            
+                                        </div>
+                                    </section>    
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+	<script src="js/jquery.steps.js"></script>
+	<script src="js/main.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
